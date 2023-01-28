@@ -7,13 +7,13 @@ const LeaguesProvider = ({ children }) => {
   const [leagueStandings, setleagueStandings] = useState([]);
   const [playerStats, setplayerStats] = useState([]);
 
-  const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY;
-  const RAPIDAPI_HOST = import.meta.env.VITE_RAPIDAPI_HOST;
+  // const RAPIDAPI_KEY = import.meta.env.VITE_RAPIDAPI_KEY;
+  // const RAPIDAPI_HOST = import.meta.env.VITE_RAPIDAPI_HOST;
 
   const config = {
     headers: {
-      "x-rapidapi-key": RAPIDAPI_KEY,
-      "x-rapidapi-host": RAPIDAPI_HOST,
+      "x-rapidapi-key": "api-football-beta.p.rapidapi.com",
+      "x-rapidapi-host": "6405731328msh3e91adde0edf0c4p17918ejsn6d34febc19b5",
     },
   };
   // Data from SoccerForm
