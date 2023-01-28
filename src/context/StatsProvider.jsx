@@ -22,6 +22,7 @@ const LeaguesProvider = ({ children }) => {
       const { year, league } = datos;
       const url = `https://api-football-beta.p.rapidapi.com/standings?season=${year}&league=${league}`;
       const response = await axios.get(url, config);
+      console.log(config);
       console.log(response);
       setleagueStandings(response.data.response[0].league.standings[0]);
       console.log(response.data.response[0].league.standings[0]); //Array de objetos (20) [{...}[0], {...}[1], {...}[2]]
