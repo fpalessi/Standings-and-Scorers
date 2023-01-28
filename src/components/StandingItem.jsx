@@ -3,7 +3,7 @@ const StandingItem = ({ standing }) => {
     <tr>
       <td>{standing?.rank}</td>{" "}
       <td>
-        <img src={standing?.team.logo} width={30} />
+        <img src={standing?.team.logo} width={30} loading="lazy" />
       </td>
       <td>{standing?.team.name}</td>
       <td>{standing?.all.played}</td>

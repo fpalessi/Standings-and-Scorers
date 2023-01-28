@@ -1,32 +1,21 @@
+import "./App.css";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { LeaguesProvider } from "./context/LeaguesProvider";
+import { LeaguesProvider } from "./context/StatsProvider";
 import SoccerForm from "./components/SoccerForm";
 import StandingList from "./components/StandingList";
-import StandingItem from "./components/StandingItem";
 import ScorersList from "./components/ScorersList";
-import ScorersItem from "./components/ScorersItem";
-import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <>
+    <div className="App">
       <LeaguesProvider>
-        <Navbar />
         <SoccerForm />
         <Container>
-          <Row>
-            <StandingList />
-            <ScorersList />
-          </Row>
-          <Col>
-            <StandingItem />
-            <ScorersItem />
-          </Col>
+          <StandingList />
+          <ScorersList />
         </Container>
       </LeaguesProvider>
-    </>
+    </div>
   );
 };
 

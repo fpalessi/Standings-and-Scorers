@@ -1,7 +1,7 @@
 import { Button, Form, Row, Col, Alert } from "react-bootstrap";
 import { useState } from "react";
 import { leagues, years } from "../data";
-import useStanding from "../hooks/useStanding";
+import useStats from "../hooks/useStats";
 
 const SoccerForm = () => {
   const [search, setSearch] = useState({
@@ -10,7 +10,7 @@ const SoccerForm = () => {
   });
   const [alert, setAlert] = useState("");
 
-  const { getLeague, getScorers } = useStanding();
+  const { getLeague, getScorers } = useStats();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const SoccerForm = () => {
   };
 
   return (
-    <Form style={{ margin: "30px" }} onSubmit={handleSubmit}>
+    <Form style={{ margin: "30px" }} onSubmit={handleSubmit} sm={12}>
       {alert && (
         <Alert variant="danger" className="text-center">
           {alert}
@@ -46,6 +46,7 @@ const SoccerForm = () => {
             <Form.Select
               id="league"
               name="league"
+              style={{ color: "gray" }}
               value={search.league}
               onChange={(e) =>
                 setSearch({ ...search, [e.target.name]: e.target.value })
@@ -72,6 +73,7 @@ const SoccerForm = () => {
             <Form.Select
               id="year"
               name="year"
+              style={{ color: "gray" }}
               value={search.year}
               onChange={(e) =>
                 setSearch({ ...search, [e.target.name]: e.target.value })
@@ -87,9 +89,7 @@ const SoccerForm = () => {
       </Row>
       <Row className="justify-content-end">
         <Col md={3}>
-          <Button type="submit" style={{ width: "100%" }}>
-            Buscar Clasificación y Goleadores
-          </Button>
+          <Button type="submit">Buscar Clasificación y Goleadores</Button>
         </Col>
       </Row>
     </Form>

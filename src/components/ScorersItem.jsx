@@ -3,7 +3,12 @@ const ScorersItem = ({ rank, photo, name, goals, assists, game, team }) => {
     <tr>
       <td>{rank}</td>{" "}
       <td>
-        <img src={photo} width={30} style={{ borderRadius: "50px" }} />
+        <img
+          src={photo}
+          width={30}
+          style={{ borderRadius: "50px" }}
+          loading="lazy"
+        />
       </td>
       <td>{name}</td>
       <td>{goals}</td>

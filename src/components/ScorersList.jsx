@@ -1,10 +1,8 @@
-import useStanding from "../hooks/useStanding";
-import Table from "react-bootstrap/Table";
+import useStats from "../hooks/useStats";
 import ScorersItem from "./ScorersItem";
-import "animate.css";
 
 const ScorersList = () => {
-  const { playerStats } = useStanding();
+  const { playerStats } = useStats();
 
   console.log(playerStats);
 
@@ -29,7 +27,7 @@ const ScorersList = () => {
   });
 
   return (
-    <Table bordered className="table animate__animated animate__backInRight">
+    <table>
       <thead>
         <tr>
           <th>#</th>
@@ -42,7 +40,7 @@ const ScorersList = () => {
         </tr>
       </thead>
       <tbody>{forTopScorerItem}</tbody>
-    </Table>
+    </table>
   );
 };
 

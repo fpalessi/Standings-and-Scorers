@@ -1,10 +1,8 @@
-import useStanding from "../hooks/useStanding";
-import Table from "react-bootstrap/Table";
+import useStats from "../hooks/useStats";
 import StandingItem from "./StandingItem";
-import "animate.css";
 
 const StandingList = () => {
-  const { leagueStandings } = useStanding();
+  const { leagueStandings } = useStats();
   console.log(leagueStandings);
 
   if (leagueStandings.length === 0) {
@@ -12,7 +10,7 @@ const StandingList = () => {
   }
 
   return (
-    <Table bordered className="table animate__animated animate__backInLeft">
+    <table>
       <thead>
         <tr>
           <th>#</th>
@@ -29,7 +27,7 @@ const StandingList = () => {
           <StandingItem key={standing.team.name} standing={standing} />
         ))}
       </tbody>
-    </Table>
+    </table>
   );
 };
 
