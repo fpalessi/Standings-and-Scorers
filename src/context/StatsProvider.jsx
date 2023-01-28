@@ -12,8 +12,8 @@ const LeaguesProvider = ({ children }) => {
 
   const config = {
     headers: {
-      "x-rapidapi-key": "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-host": "6405731328msh3e91adde0edf0c4p17918ejsn6d34febc19b5",
+      "x-rapidapi-key": "6405731328msh3e91adde0edf0c4p17918ejsn6d34febc19b5",
+      "x-rapidapi-host": "api-football-beta.p.rapidapi.com",
     },
   };
   // Data from SoccerForm
