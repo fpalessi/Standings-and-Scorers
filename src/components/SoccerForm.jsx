@@ -2,6 +2,8 @@ import { Button, Form, Row, Col, Alert } from "react-bootstrap";
 import { useState } from "react";
 import { leagues, years } from "../data";
 import useStats from "../hooks/useStats";
+import Lottie from "lottie-react";
+import Loader from "./Loader";
 
 const SoccerForm = () => {
   const [search, setSearch] = useState({
@@ -10,7 +12,7 @@ const SoccerForm = () => {
   });
   const [alert, setAlert] = useState("");
 
-  const { getLeague, getScorers } = useStats();
+  const { getLeague, getScorers, isLoading } = useStats();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,11 +23,12 @@ const SoccerForm = () => {
     }
     // Limpiar alerta
     setAlert("");
-    console.log(search);
     // Consultar API
     getLeague(search);
     getScorers(search);
   };
+
+  if (isLoading) return <Loader />;
 
   return (
     <Form style={{ margin: "30px" }} onSubmit={handleSubmit} sm={12}>
@@ -34,6 +37,7 @@ const SoccerForm = () => {
           {alert}
         </Alert>
       )}
+
       <Row>
         <Col md={6}>
           <Form.Group className="mb-3">

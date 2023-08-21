@@ -4,6 +4,7 @@ import axios from "axios";
 const StatsContext = createContext();
 
 const LeaguesProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [leagueStandings, setleagueStandings] = useState([]);
   const [playerStats, setplayerStats] = useState([]);
 
@@ -18,6 +19,7 @@ const LeaguesProvider = ({ children }) => {
   };
   // Data from SoccerForm
   const getLeague = async (datos) => {
+    setIsLoading(true);
     try {
       const { year, league } = datos;
       const url = `https://api-football-beta.p.rapidapi.com/standings?season=${year}&league=${league}`;
@@ -28,9 +30,12 @@ const LeaguesProvider = ({ children }) => {
       console.log(response.data.response[0].league.standings[0]); //Array de objetos (20) [{...}[0], {...}[1], {...}[2]]
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   const getScorers = async (datos) => {
+    setIsLoading(true);
     try {
       const { year, league } = datos;
       const url = `https://api-football-beta.p.rapidapi.com/players/topscorers?season=${year}&league=${league}`;
@@ -39,17 +44,14 @@ const LeaguesProvider = ({ children }) => {
       console.log(response.data.response); //Array de arrays de objetos 20 -> 0: {player: {...}, statistics: Array(1)}
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <StatsContext.Provider
-      value={{
-        getLeague,
-        getScorers,
-        playerStats,
-        leagueStandings,
-      }}
+      value={{ isLoading, getLeague, getScorers, playerStats, leagueStandings }}
     >
       {children}
     </StatsContext.Provider>

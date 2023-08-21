@@ -4,8 +4,6 @@ import ScorersItem from "./ScorersItem";
 const ScorersList = () => {
   const { playerStats } = useStats();
 
-  console.log(playerStats);
-
   if (playerStats.length === 0) {
     return "";
   }
